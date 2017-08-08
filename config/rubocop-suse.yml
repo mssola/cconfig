@@ -28,12 +28,12 @@ Metrics/LineLength:
     - http
     - https
 
-Style/AlignHash:
+Layout/AlignHash:
   StyleGuide: https://github.com/SUSE/style-guides/blob/master/Ruby.md#stylealignhash
   EnforcedHashRocketStyle: table
   EnforcedColonStyle: table
 
-Style/AlignParameters:
+Layout/AlignParameters:
   StyleGuide: https://github.com/SUSE/style-guides/blob/master/Ruby.md#stylealignparameters
   Enabled: false
 
@@ -41,11 +41,11 @@ Style/CollectionMethods:
   StyleGuide: https://github.com/SUSE/style-guides/blob/master/Ruby.md#stylecollectionmethods
   Enabled: false
 
-Style/EmptyLinesAroundBlockBody:
+Layout/EmptyLinesAroundBlockBody:
   StyleGuide: https://github.com/SUSE/style-guides/blob/master/Ruby.md#styleemptylinesaroundblockbody
   Enabled: false
 
-Style/MultilineOperationIndentation:
+Layout/MultilineOperationIndentation:
   StyleGuide: https://github.com/SUSE/style-guides/blob/master/Ruby.md#stylemultilineoperationindentation
   EnforcedStyle: indented
 
