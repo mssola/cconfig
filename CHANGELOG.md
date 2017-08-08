@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.0
+
+- Added the `disabled?` method, which is a shorthand for `enabled?`.
+
 ## 1.0.0
 
 - First release which includes the following features:
