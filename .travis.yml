@@ -1,0 +1,22 @@
+language: ruby
+
+cache: bundler
+
+sudo: false
+
+rvm:
+  - 2.1.10
+  - 2.2.7
+  - 2.3.4
+  - 2.4.1
+  - ruby-head
+
+script:
+  - bundle exec rspec
+  - bundle exec rubocop -V
+  - bundle exec rubocop -F
+
+matrix:
+  allow_failures:
+    - rvm: ruby-head
+  fast_finish: true

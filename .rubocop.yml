@@ -1,0 +1,31 @@
+require:
+  - rubocop-rspec
+
+inherit_from:
+- ./config/rubocop-suse.yml
+
+# Both my last names contain non-ascii characters :) (license notice)
+Style/AsciiComments:
+  Enabled: false
+
+# Disable the block length cop for tests.
+Metrics/BlockLength:
+  Enabled: true
+  Exclude:
+    - spec/**/*
+
+Metrics/MethodLength:
+  Max: 20
+
+# Sometimes we need more than one "expect" command to build our actual
+# expectation.
+RSpec/MultipleExpectations:
+  Max: 6
+
+# Setting a more reasonable value.
+RSpec/ExampleLength:
+  Max: 10
+
+# Otherwise CConfig is not allowed ...
+RSpec/FilePath:
+  Enabled: false
