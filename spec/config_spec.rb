@@ -74,6 +74,11 @@ describe CConfig::Config do
     expect(cfg.enabled?("email.smtp")).to be true
   end
 
+  it "offers the #disabled? method" do
+    cfg = get_config("config.yml", "").fetch
+    expect(cfg.disabled?("ldap")).to be_truthy
+  end
+
   it "selects the proper local file depending of the environment variable" do
     # Instead of bad.yml (which will raise an error on `fetch`), we will pick up
     # the local.yml file.
