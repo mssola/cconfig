@@ -40,6 +40,12 @@ module CConfig
           self[feature]["enabled"].eql?(true)
         end
       end
+
+      # Returns true if the given feature is disabled or doesn't exist. This is
+      # a shorthand for `!enabled?`.
+      def disabled?(feature)
+        !enabled?(feature)
+      end
     end
 
     protected
