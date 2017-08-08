@@ -25,7 +25,7 @@ namespace :cconfig do
 
     # Note that local will change if "#{prefix.upcase}_LOCAL_CONFIG_PATH" was
     # specified.
-    cfg = ::CConfig::Config.new(default, local, prefix)
+    cfg = ::CConfig::Config.new(default: default, local: local, prefix: prefix)
     puts "Evaluated configuration:\n#{cfg}"
   end
 end
