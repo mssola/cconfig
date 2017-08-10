@@ -30,14 +30,14 @@ module CConfig
 
     # Instantiate an object with `default` as the path to the default
     # configuration, `local` as the alternate file, and `prefix` as the prefix
-    # for environment variables.
+    # for environment variables. The `prefix` will take "cconfig" as the default.
     #
     # Note: the `local` value will be discarded in favor of the
     # `#{prefix}_LOCAL_CONFIG_PATH` environment variable if it was set.
     def initialize(default:, local:, prefix:)
       @default = default
-      @local   = ENV["#{prefix.upcase}_LOCAL_CONFIG_PATH"] || local
-      @prefix  = prefix
+      @prefix  = prefix || "cconfig"
+      @local   = ENV["#{@prefix.upcase}_LOCAL_CONFIG_PATH"] || local
     end
 
     # Returns a hash with the app configuration contained in it.
