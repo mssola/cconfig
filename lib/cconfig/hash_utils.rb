@@ -31,14 +31,16 @@ module CConfig
       #     b:
       #       enabled: true
       def enabled?(feature)
-        objs = feature.split(".")
-        if objs.length == 2
-          return false if !self[objs[0]][objs[1]] || self[objs[0]][objs[1]].empty?
-          self[objs[0]][objs[1]]["enabled"].eql?(true)
-        else
-          return false if !self[feature] || self[feature].empty?
-          self[feature]["enabled"].eql?(true)
+        cur   = self
+        parts = feature.split(".")
+
+        parts.each do |part|
+          cur = cur[part]
+          return false if !cur || cur.empty?
+          return true  if cur.key?("enabled") && cur["enabled"].eql?(true)
         end
+
+        false
       end
 
       # Returns true if the given feature is disabled or doesn't exist. This is

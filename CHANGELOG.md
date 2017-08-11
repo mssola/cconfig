@@ -1,5 +1,9 @@
 # Changelog
 
+## Next version
+
+- Fixed crash on nested values on the `#enabled?` method. See [#3](https://github.com/mssola/cconfig/issues/3).
+
 ## 1.1.0
 
 - Added the `disabled?` method, which is a shorthand for `enabled?`.

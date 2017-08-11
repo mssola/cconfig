@@ -65,4 +65,14 @@ describe ::CConfig::HashUtils do
     expect(cfg["ldap"]["count"]).to eq 2          # env
     expect(cfg["ldap"]["string"]).to eq "string"  # env
   end
+
+  # See issue #3
+  it "does not crash on nested default that doesn't exist" do
+    cfg = ConfigMock.new.strict_merge_with_env_test(default: default, local: local, prefix: "test")
+
+    cfg.extend(::CConfig::HashUtils::Extensions)
+    expect(cfg.enabled?("gravatar")).to be_truthy
+    expect(cfg.enabled?("oauth.google_oauth2")).to be_falsey
+    expect(cfg.enabled?("something.that.does.not.exist")).to be_falsey
+  end
 end
