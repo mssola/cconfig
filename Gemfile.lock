@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cconfig (1.1.0)
+    cconfig (1.1.1)
       safe_yaml (~> 1.0.0, >= 1.0.0)
 
 GEM

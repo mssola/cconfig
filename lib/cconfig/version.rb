@@ -19,5 +19,5 @@
 
 module CConfig
   # The current version of CConfig.
-  VERSION = "1.1.0".freeze
+  VERSION = "1.1.1".freeze
 end

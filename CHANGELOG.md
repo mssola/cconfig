@@ -1,6 +1,6 @@
 # Changelog
 
-## Next version
+## 1.1.1
 
 - Fixed crash on nested values on the `#enabled?` method. See [#3](https://github.com/mssola/cconfig/issues/3).
 - The `prefix` argument from the constructor now takes a default
