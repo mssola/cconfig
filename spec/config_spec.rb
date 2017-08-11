@@ -84,9 +84,10 @@ describe CConfig::Config do
     # the local.yml file.
     base  = File.join(File.dirname(__FILE__), "fixtures")
     local = File.join(base, "bad.yml")
-    ENV["TEST_LOCAL_CONFIG_PATH"] = File.join(base, "local.yml")
+    ENV["CCONFIG_LOCAL_CONFIG_PATH"] = File.join(base, "local.yml")
 
-    cfg = ::CConfig::Config.new(default: "config.yml", local: local, prefix: "test")
+    # Passing nil to the prefix on purpose (see SUSE/Portus#1379)
+    cfg = ::CConfig::Config.new(default: "config.yml", local: local, prefix: nil)
     expect { cfg.fetch }.not_to raise_error
   end
 end
