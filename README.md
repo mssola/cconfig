@@ -1,4 +1,4 @@
-# CConfig [![Build Status](https://travis-ci.org/mssola/cconfig.svg?branch=master)](https://travis-ci.org/mssola/cconfig)
+# CConfig [![Build Status](https://travis-ci.org/mssola/cconfig.svg?branch=master)](https://travis-ci.org/mssola/cconfig) [![Gem Version](https://badge.fury.io/rb/cconfig.svg)](https://badge.fury.io/rb/cconfig)
 
 CConfig (Container Config) is a container-aware configuration management
 gem. This is useful for applications that want to keep a reference configuration
