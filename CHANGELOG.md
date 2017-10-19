@@ -1,5 +1,14 @@
 # Changelog
 
+## Next version
+
+## 1.2.0
+
+- Added the `#default_of` method for the returned hash (hence `APP_CONFIG` as
+  well). This method returns the default value for a given key. It can be useful
+  to check whether a configuration value has been set by either environment
+  variables or the local configuration. See [commit](50d638c8d81bab6b17164a1a5661dc2ca730cf92).
+
 ## 1.1.1
 
 - Fixed crash on nested values on the `#enabled?` method. See [#3](https://github.com/mssola/cconfig/issues/3).
