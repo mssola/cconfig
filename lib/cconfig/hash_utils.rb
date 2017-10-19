@@ -24,6 +24,8 @@ module CConfig
     # Extensions contains the methods to be provided for each hash object
     # produced by this gem.
     module Extensions
+      attr_accessor :defaults
+
       # Returns true if the given feature is enabled, false otherwise. This also
       # works in embedded configuration values. For example: enabled?("a.b")
       # will return true for:
@@ -47,6 +49,19 @@ module CConfig
       # a shorthand for `!enabled?`.
       def disabled?(feature)
         !enabled?(feature)
+      end
+
+      # Returns the default value of the given key. Note that this key can
+      # specify nested values with the period notation (e.g. "a.b").
+      def default_of(key)
+        cur = defaults
+
+        key.split(".").each do |part|
+          cur = cur[part]
+          return if cur.nil?
+        end
+
+        cur
       end
     end
 

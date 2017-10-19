@@ -24,7 +24,8 @@ require "yaml"
 module CConfig
   # Config is the main class of this library. It allows you to fetch the current
   # configuration (after merging the values from all sources) as a hash. This
-  # has will have the special method `::CConfig::HashUtils::Extensions#enabled?`.
+  # has will have some specials methods: `::CConfig::HashUtils::Extensions#enabled?`,
+  # `::CConfig::HashUtils::Extensions#disabled?` and `::CConfig::HashUtils::Extensions#default_of`.
   class Config
     include ::CConfig::HashUtils
 
@@ -42,12 +43,13 @@ module CConfig
 
     # Returns a hash with the app configuration contained in it.
     def fetch
-      cfg   = {}
-      cfg   = YAML.load_file(@default) if File.file?(@default)
+      cfg   = File.file?(@default) ? YAML.load_file(@default) : {}
       local = fetch_local
 
       hsh = strict_merge_with_env(default: cfg, local: local, prefix: @prefix)
       hsh.extend(::CConfig::HashUtils::Extensions)
+      hsh.defaults = cfg
+      hsh
     end
 
     # Returns a string representation of the evaluated configuration.
