@@ -58,7 +58,7 @@ module CConfig
 
         key.split(".").each do |part|
           cur = cur[part]
-          return if cur.nil?
+          break if cur.nil?
         end
 
         cur
