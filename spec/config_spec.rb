@@ -29,7 +29,7 @@ end
 
 describe CConfig::Config do
   after do
-    ["TEST_LOCAL_CONFIG_PATH"].each { |key| ENV[key] = nil }
+    ["TEST_LOCAL_CONFIG_PATH", "TEST_EMAIL_SMTP_ENABLED"].each { |key| ENV[key] = nil }
     ["TEST_LDAP_COUNT", "TEST_ANOTHER_ENABLED", "TEST_LDAP_STRING"].each do |key|
       ENV[key] = nil
     end
@@ -90,6 +90,12 @@ describe CConfig::Config do
     it "works for nested options" do
       cfg = get_config("config.yml", "").fetch
       expect(cfg.enabled?("email.smtp")).to be true
+    end
+
+    it "works with environment variables" do
+      ENV["TEST_EMAIL_SMTP_ENABLED"] = "false"
+      cfg = get_config("config.yml", "").fetch
+      expect(cfg.enabled?("email.smtp")).to be false
     end
 
     it "offers the #disabled? method" do
