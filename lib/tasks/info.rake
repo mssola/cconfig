@@ -1,6 +1,6 @@
 # coding: utf-8
 
-# Copyright (C) 2017 Miquel Sabaté Solà <msabate@suse.com>
+# Copyright (C) 2017-2018 Miquel Sabaté Solà <msabate@suse.com>
 #
 # This file is part of CConfig.
 #
