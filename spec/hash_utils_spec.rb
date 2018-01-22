@@ -1,4 +1,4 @@
-# coding: utf-8
+# frozen_string_literal: true
 
 # Copyright (C) 2017-2018 Miquel Sabaté Solà <msabate@suse.com>
 #
@@ -27,7 +27,7 @@ end
 
 describe ::CConfig::HashUtils do
   after do
-    ["TEST_LDAP_COUNT", "TEST_ANOTHER_ENABLED", "TEST_LDAP_STRING"].each do |key|
+    %w[TEST_LDAP_COUNT TEST_ANOTHER_ENABLED TEST_LDAP_STRING].each do |key|
       ENV[key] = nil
     end
   end
@@ -71,8 +71,8 @@ describe ::CConfig::HashUtils do
     cfg = ConfigMock.new.strict_merge_with_env_test(default: default, local: local, prefix: "test")
 
     cfg.extend(::CConfig::HashUtils::Extensions)
-    expect(cfg.enabled?("gravatar")).to be_truthy
-    expect(cfg.enabled?("oauth.google_oauth2")).to be_falsey
-    expect(cfg.enabled?("something.that.does.not.exist")).to be_falsey
+    expect(cfg).to be_enabled("gravatar")
+    expect(cfg).not_to be_enabled("oauth.google_oauth2")
+    expect(cfg).not_to be_enabled("something.that.does.not.exist")
   end
 end

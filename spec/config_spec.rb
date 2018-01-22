@@ -1,4 +1,4 @@
-# coding: utf-8
+# frozen_string_literal: true
 
 # Copyright (C) 2017-2018 Miquel Sabaté Solà <msabate@suse.com>
 #
@@ -29,8 +29,8 @@ end
 
 describe CConfig::Config do
   after do
-    ["TEST_LOCAL_CONFIG_PATH", "TEST_EMAIL_SMTP_ENABLED"].each { |key| ENV[key] = nil }
-    ["TEST_LDAP_COUNT", "TEST_ANOTHER_ENABLED", "TEST_LDAP_STRING"].each do |key|
+    %w[TEST_LOCAL_CONFIG_PATH TEST_EMAIL_SMTP_ENABLED].each { |key| ENV[key] = nil }
+    %w[TEST_LDAP_COUNT TEST_ANOTHER_ENABLED TEST_LDAP_STRING].each do |key|
       ENV[key] = nil
     end
   end
@@ -61,8 +61,8 @@ describe CConfig::Config do
     it "merges both config files and work as expected" do
       cfg = get_config("config.yml", "local.yml").fetch
 
-      expect(cfg.enabled?("gravatar")).to be_truthy
-      expect(cfg.enabled?("ldap")).to be_truthy
+      expect(cfg).to be_enabled("gravatar")
+      expect(cfg).to be_enabled("ldap")
       expect(cfg["ldap"]["hostname"]).to eq "ldap.example.com"
       expect(cfg["ldap"]["port"]).to eq 389
       expect(cfg["ldap"]["base"]).to eq "ou=users,dc=example,dc=com"
@@ -100,7 +100,7 @@ describe CConfig::Config do
 
     it "offers the #disabled? method" do
       cfg = get_config("config.yml", "").fetch
-      expect(cfg.disabled?("ldap")).to be_truthy
+      expect(cfg).to be_disabled("ldap")
     end
   end
 
