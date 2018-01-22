@@ -2,6 +2,9 @@
 
 ## Next version
 
+- Added support for Ruby 2.5.0: nothing has really been done besides adding
+  2.5.0 into the CI system and such.
+
 ## 1.2.0
 
 - Added the `#default_of` method for the returned hash (hence `APP_CONFIG` as
