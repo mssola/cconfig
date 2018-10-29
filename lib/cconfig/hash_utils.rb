@@ -39,10 +39,9 @@ module CConfig
         parts.each do |part|
           cur = cur[part]
           return false if !cur || cur.empty?
-          return true  if cur.key?("enabled") && cur["enabled"].eql?(true)
         end
 
-        false
+        cur.key?("enabled") && cur["enabled"].eql?(true)
       end
 
       # Returns true if the given feature is disabled or doesn't exist. This is

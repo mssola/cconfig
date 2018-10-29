@@ -102,6 +102,12 @@ describe CConfig::Config do
       cfg = get_config("config.yml", "").fetch
       expect(cfg).to be_disabled("ldap")
     end
+
+    it "handles enabled on nested elements" do
+      cfg = get_config("config.yml", "").fetch
+      expect(cfg).to be_enabled("delete")
+      expect(cfg).to be_disabled("delete.garbage_collector")
+    end
   end
 
   describe "#default_of" do
