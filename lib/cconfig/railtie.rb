@@ -29,8 +29,8 @@ module CConfig
 
     initializer "cconfig" do |app|
       prefix     = ENV["CCONFIG_PREFIX"] || app.class.parent_name.inspect
-      default    = File.join(Rails.root, "config", "config.yml")
-      local      = File.join(Rails.root, "config", "config-local.yml")
+      default    = Rails.root.join("config", "config.yml")
+      local      = Rails.root.join("config", "config-local.yml")
       cfg        = ::CConfig::Config.new(default: default, local: local, prefix: prefix)
 
       # NOTE: this is a global constant from now on. The Rails application
