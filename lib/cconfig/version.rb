@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Copyright (C) 2017-2018 Miquel Sabaté Solà <msabate@suse.com>
+# Copyright (C) 2017-2020 Miquel Sabaté Solà <msabate@suse.com>
 #
 # This file is part of CConfig.
 #
@@ -19,5 +19,5 @@
 
 module CConfig
   # The current version of CConfig.
-  VERSION = "1.2.1".freeze
+  VERSION = "1.2.1"
 end

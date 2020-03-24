@@ -115,6 +115,8 @@ Last but not least, this Railtie also offers a rake task called
 `cconfig:info`. This rake task prints to standard output the evaluated
 configuration.
 
+This gem supports Ruby on Rails `5.x` and `6.x`.
+
 ## License
 
 This project is based on work I did for the
@@ -122,7 +124,7 @@ This project is based on work I did for the
 gem so it can be also used for other projects that might be interested in this.
 
 ```
-Copyright (C) 2017-2018 Miquel Sabaté Solà <msabate@suse.com>
+Copyright (C) 2017-2020 Miquel Sabaté Solà <msabate@suse.com>
 
 CConfig is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by

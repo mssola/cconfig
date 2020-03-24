@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Copyright (C) 2017-2018 Miquel Sabaté Solà <msabate@suse.com>
+# Copyright (C) 2017-2020 Miquel Sabaté Solà <msabate@suse.com>
 #
 # This file is part of CConfig.
 #
@@ -21,7 +21,7 @@ module CConfig
   # FormatError is the exception to be raised when a configuration file cannot
   # be parsed.
   class FormatError < StandardError
-    DEFAULT_MSG = "Wrong format for the config-local file!".freeze
+    DEFAULT_MSG = "Wrong format for the config-local file!"
 
     def initialize
       super(DEFAULT_MSG)

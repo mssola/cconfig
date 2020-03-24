@@ -2,12 +2,13 @@ require:
   - rubocop-rspec
 
 AllCops:
+  TargetRubyVersion: 2.3
   DisplayCopNames: true
   DisplayStyleGuide: false
 
 # This is a remnant of old SUSE-style alignment for hashes, The table format
 # looks more human readable.
-Layout/AlignHash:
+Layout/HashAlignment:
   EnforcedHashRocketStyle: table
   EnforcedColonStyle: table
 
@@ -51,3 +52,15 @@ RSpec/ExampleLength:
 # Otherwise CConfig is not allowed ...
 RSpec/FilePath:
   Enabled: false
+
+##
+# Newly added cops
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
