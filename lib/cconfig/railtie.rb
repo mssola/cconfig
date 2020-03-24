@@ -28,7 +28,7 @@ module CConfig
     railtie_name :cconfig
 
     initializer "cconfig" do |app|
-      prefix     = ENV["CCONFIG_PREFIX"] || app.class.parent_name.inspect
+      prefix     = ::CConfig::Railtie.fetch_prefix(app)
       default    = Rails.root.join("config", "config.yml")
       local      = Rails.root.join("config", "config-local.yml")
       cfg        = ::CConfig::Config.new(default: default, local: local, prefix: prefix)
@@ -41,6 +41,20 @@ module CConfig
     rake_tasks do
       Dir[File.join(File.dirname(__FILE__), "../tasks/*.rake")].each do |task|
         load task
+      end
+    end
+
+    # fetch_prefix returns a string containing the prefix to be used by our
+    # CConfig::Config instance.
+    #
+    # app contains the Rails application as given by the railtie API.
+    def self.fetch_prefix(app)
+      if ENV["CCONFIG_PREFIX"].present?
+        ENV["CCONFIG_PREFIX"]
+      elsif Rails::VERSION::MAJOR >= 6
+        app.class.module_parent_name.inspect
+      else
+        app.class.parent_name.inspect
       end
     end
   end
