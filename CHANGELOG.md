@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.3.0
+
+- Added Ruby on Rails 6.x support. See
+  [commit](dccbf672614d87cd5bc7171d6db1fdad7d5b7657).
+- Added support for Ruby 2.7, although nothing has really been done besides
+  adding it on the CI and checking that it works.
+
 ## 1.2.1
 
 - Added support for Ruby 2.5 and 2.6: nothing has really been done besides
