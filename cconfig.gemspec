@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.files         = `git ls-files`.split($RS)
   spec.require_paths = ['lib']
 
-  spec.required_ruby_version = '>= 2.3.0'
+  spec.required_ruby_version = '>= 2.7.0'
 
   spec.add_dependency 'safe_yaml', '~> 1.0.0', '>= 1.0.0'
 

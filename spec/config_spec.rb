@@ -24,7 +24,7 @@ def get_config(default, local)
   base    = File.join(File.dirname(__FILE__), 'fixtures')
   default = File.join(base, default)
   local   = File.join(base, local)
-  ::CConfig::Config.new(default:, local:, prefix: 'test')
+  ::CConfig::Config.new(default: default, local: local, prefix: 'test')
 end
 
 describe CConfig::Config do
@@ -43,7 +43,7 @@ describe CConfig::Config do
     ENV['CCONFIG_LOCAL_CONFIG_PATH'] = File.join(base, 'local.yml')
 
     # Passing nil to the prefix on purpose (see SUSE/Portus#1379)
-    cfg = ::CConfig::Config.new(default: 'config.yml', local:, prefix: nil)
+    cfg = ::CConfig::Config.new(default: 'config.yml', local: local, prefix: nil)
     expect { cfg.fetch }.not_to raise_error
   end
 
