@@ -115,7 +115,7 @@ Last but not least, this Railtie also offers a rake task called
 `cconfig:info`. This rake task prints to standard output the evaluated
 configuration.
 
-This gem supports Ruby on Rails `5.x` and `6.x`.
+This gem supports Ruby on Rails `5.x`, `6.x` and `7.x`.
 
 ## Contributing
 

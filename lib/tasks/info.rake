@@ -19,8 +19,13 @@
 
 namespace :cconfig do
   desc "Prints the evaluated configuration"
-  task :info, [:prefix] => :environment do |_, args|
-    prefix  = args[:prefix]
+  task :info, [:prefix] => :environment do |a, args|
+    prefix = if defined?(Rails)
+               ::CConfig::Railtie.fetch_prefix(Rails.application)
+             else
+               prefix = args[:prefix]
+             end
+
     default = File.join(Rails.root, "config", "config.yml")
     local   = File.join(Rails.root, "config", "config-local.yml")
 
