@@ -1,4 +1,9 @@
-# CConfig [![Build Status](https://travis-ci.org/mssola/cconfig.svg?branch=master)](https://travis-ci.org/mssola/cconfig) [![Gem Version](https://badge.fury.io/rb/cconfig.svg)](https://badge.fury.io/rb/cconfig)
+<p align="center">
+  <a href="https://github.com/mssola/cconfig/actions/workflows/ruby.yml" title="CI status for the main branch"><img src="https://github.com/mssola/cconfig/actions/workflows/ruby.yml/badge.svg?branch=main" alt="Build Status for main branch" /></a>
+  <a href="http://www.gnu.org/licenses/lgpl-3.0.txt" rel="nofollow"><img alt="License LGPL 3+" src="https://img.shields.io/badge/license-LGPL_3-blue.svg" style="max-width:100%;"></a>
+</p>
+
+---
 
 CConfig (Container Config) is a container-aware configuration management
 gem. This is useful for applications that want to keep a reference configuration
