@@ -1,66 +1,92 @@
-require:
-  - rubocop-rspec
+---
 
 AllCops:
   TargetRubyVersion: 2.3
+
   DisplayCopNames: true
   DisplayStyleGuide: false
+  SuggestExtensions: false
 
-# This is a remnant of old SUSE-style alignment for hashes, The table format
-# looks more human readable.
+  NewCops: enable
+
+  Exclude:
+    - spec/**/*
+    - vendor/**/*
+
+##
+# Plugins
+
+require:
+  - rubocop-performance
+  - rubocop-rake
+
+#
+# Layout
+#
+
+# The table format is more human readable.
 Layout/HashAlignment:
   EnforcedHashRocketStyle: table
   EnforcedColonStyle: table
 
-# Both my last names contain non-ascii characters :) (license notice)
-Style/AsciiComments:
-  Enabled: false
-
-# Disable the block length cop for tests.
-Metrics/BlockLength:
-  Enabled: true
-  Exclude:
-    - spec/**/*
-
-# The default is just too small. A limit of 100 looks reasonable and many other
-# projects (including inside of SUSE) are also using this value.
-Metrics/LineLength:
+# The default is just too small. A limit of 100 looks reasonable.
+Layout/LineLength:
   Max: 100
 
+#
+# Metrics
+#
+
+# The default is just too small.
+Metrics/AbcSize:
+  Max: 30
+
+# We will skip it for Rake tasks.
+Metrics/ClassLength:
+  Exclude:
+    - test/**/*
+
+# We will skip it for Rake tasks.
+Metrics/BlockLength:
+  Exclude:
+    - lib/tasks/**/*
+    - test/**/*
+
+# The default is just too small.
 Metrics/MethodLength:
   Max: 20
 
-# This is a common SUSE configuration value: the performance difference between
-# single and double quotes is no longer there, and so it's better to be
-# consistent and force only double quotes.
-Style/StringLiterals:
-  EnforcedStyle: double_quotes
+#
+# Style
+#
 
-# Same as Style/StringLiterals.
-Style/StringLiteralsInInterpolation:
-  EnforcedStyle: double_quotes
-
-# Sometimes we need more than one "expect" command to build our actual
-# expectation.
-RSpec/MultipleExpectations:
-  Max: 6
-
-# Setting a more reasonable value.
-RSpec/ExampleLength:
-  Max: 10
-
-# Otherwise CConfig is not allowed ...
-RSpec/FilePath:
+# It's not needed to add documentation for obvious modules or classes. The main
+# idea is that documentation will be asked during the review process if needed.
+Style/Documentation:
   Enabled: false
 
-##
-# Newly added cops
+# This forces us to create a new object for no real reason.
+Style/MultipleComparison:
+  Enabled: false
 
-Style/HashEachMethods:
-  Enabled: true
+# There are some false positives (e.g. "module ::Module", in which we want to
+# make sure there are no clashes or misunderstandings). Therefore, we just
+# disable this cop.
+Style/ClassAndModuleChildren:
+  Enabled: false
 
-Style/HashTransformKeys:
-  Enabled: true
+# I do need to write non-ASCII words from time to time since, you know, this is
+# a language application and latin words can have macrons.
+Style/AsciiComments:
+  Enabled: false
 
-Style/HashTransformValues:
-  Enabled: true
+#
+# Naming
+#
+
+# The default minimum length is 3, which is too long for good names like
+# "js". Variables with only one letter are usually disallowed, but there are
+# some names which are easy to understand (e.g. convention).
+Naming/MethodParameterName:
+  MinNameLength: 2
+  AllowedNames: [_, n]

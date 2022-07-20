@@ -18,16 +18,16 @@
 # along with CConfig.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace :cconfig do
-  desc "Prints the evaluated configuration"
-  task :info, [:prefix] => :environment do |a, args|
+  desc 'Prints the evaluated configuration'
+  task :info, [:prefix] => :environment do |_, args|
     prefix = if defined?(Rails)
                ::CConfig::Railtie.fetch_prefix(Rails.application)
              else
-               prefix = args[:prefix]
+               args[:prefix]
              end
 
-    default = File.join(Rails.root, "config", "config.yml")
-    local   = File.join(Rails.root, "config", "config-local.yml")
+    default = File.join(Rails.root, 'config', 'config.yml')
+    local   = File.join(Rails.root, 'config', 'config-local.yml')
 
     # Note that local will change if "#{prefix.upcase}_LOCAL_CONFIG_PATH" was
     # specified.

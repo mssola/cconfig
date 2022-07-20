@@ -21,7 +21,7 @@ module CConfig
   # FormatError is the exception to be raised when a configuration file cannot
   # be parsed.
   class FormatError < StandardError
-    DEFAULT_MSG = "Wrong format for the config-local file!"
+    DEFAULT_MSG = 'Wrong format for the config-local file!'
 
     def initialize
       super(DEFAULT_MSG)

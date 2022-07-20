@@ -17,8 +17,10 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with CConfig.  If not, see <http://www.gnu.org/licenses/>.
 
-require "rspec/core/rake_task"
+require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new(:spec)
 
 task default: [:spec]
+
+desc 'Run RSpec'
 task test: :spec

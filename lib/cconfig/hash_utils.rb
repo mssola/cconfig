@@ -34,14 +34,14 @@ module CConfig
       #       enabled: true
       def enabled?(feature)
         cur   = self
-        parts = feature.split(".")
+        parts = feature.split('.')
 
         parts.each do |part|
           cur = cur[part]
           return false if !cur || cur.empty?
         end
 
-        cur.key?("enabled") && cur["enabled"].eql?(true)
+        cur.key?('enabled') && cur['enabled'].eql?(true)
       end
 
       # Returns true if the given feature is disabled or doesn't exist. This is
@@ -55,7 +55,7 @@ module CConfig
       def default_of(key)
         cur = defaults
 
-        key.split(".").each do |part|
+        key.split('.').each do |part|
           cur = cur[part]
           break if cur.nil?
         end
@@ -106,8 +106,8 @@ module CConfig
       hsh.each do |k, v|
         if v.is_a?(Hash)
           hsh[k] = hide_password(v)
-        elsif k == "password"
-          hsh[k] = "****"
+        elsif k == 'password'
+          hsh[k] = '****'
         end
       end
       hsh
@@ -119,12 +119,12 @@ module CConfig
     # exist, it will return nil. Otherwise, it will try to cast the fetched
     # value into the proper type and return it.
     def get_env(key)
-      env = ENV[key.upcase]
+      env = ENV.fetch(key.upcase, nil)
       return nil if env.nil?
 
       # Try to convert it into a boolean value.
-      return true if env.casecmp("true").zero?
-      return false if env.casecmp("false").zero?
+      return true if env.casecmp('true').zero?
+      return false if env.casecmp('false').zero?
 
       # Try to convert it into an integer. Otherwise just keep the string.
       begin

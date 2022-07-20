@@ -21,7 +21,7 @@ class ConfigMock
   include ::CConfig::HashUtils
 
   def strict_merge_with_env_test(default:, local:, prefix:)
-    strict_merge_with_env(default: default, local: local, prefix: prefix)
+    strict_merge_with_env(default:, local:, prefix:)
   end
 end
 
@@ -34,45 +34,45 @@ describe ::CConfig::HashUtils do
 
   let(:default) do
     {
-      "gravatar" => { "enabled" => true },
-      "another"  => { "enabled" => true },
-      "ldap"     => {
-        "enabled" => false,
-        "count"   => 0,
-        "string"  => ""
+      'gravatar' => { 'enabled' => true },
+      'another'  => { 'enabled' => true },
+      'ldap'     => {
+        'enabled' => false,
+        'count'   => 0,
+        'string'  => ''
       }
     }.freeze
   end
 
   let(:local) do
     {
-      "ldap" => {
-        "enabled" => true,
-        "count"   => 1
+      'ldap' => {
+        'enabled' => true,
+        'count'   => 1
       }
     }.freeze
   end
 
-  it "merges hashes in a strict manner while evaluating env variables first" do
-    ENV["TEST_LDAP_COUNT"] = "2"
-    ENV["TEST_ANOTHER_ENABLED"] = "false"
-    ENV["TEST_LDAP_STRING"] = "string"
+  it 'merges hashes in a strict manner while evaluating env variables first' do
+    ENV['TEST_LDAP_COUNT'] = '2'
+    ENV['TEST_ANOTHER_ENABLED'] = 'false'
+    ENV['TEST_LDAP_STRING'] = 'string'
 
-    cfg = ConfigMock.new.strict_merge_with_env_test(default: default, local: local, prefix: "test")
-    expect(cfg["gravatar"]["enabled"]).to be true # default
-    expect(cfg["another"]["enabled"]).to be false # env
-    expect(cfg["ldap"]["enabled"]).to be true     # local
-    expect(cfg["ldap"]["count"]).to eq 2          # env
-    expect(cfg["ldap"]["string"]).to eq "string"  # env
+    cfg = ConfigMock.new.strict_merge_with_env_test(default:, local:, prefix: 'test')
+    expect(cfg['gravatar']['enabled']).to be true # default
+    expect(cfg['another']['enabled']).to be false # env
+    expect(cfg['ldap']['enabled']).to be true     # local
+    expect(cfg['ldap']['count']).to eq 2          # env
+    expect(cfg['ldap']['string']).to eq 'string'  # env
   end
 
   # See issue #3
   it "does not crash on nested default that doesn't exist" do
-    cfg = ConfigMock.new.strict_merge_with_env_test(default: default, local: local, prefix: "test")
+    cfg = ConfigMock.new.strict_merge_with_env_test(default:, local:, prefix: 'test')
 
     cfg.extend(::CConfig::HashUtils::Extensions)
-    expect(cfg).to be_enabled("gravatar")
-    expect(cfg).not_to be_enabled("oauth.google_oauth2")
-    expect(cfg).not_to be_enabled("something.that.does.not.exist")
+    expect(cfg).to be_enabled('gravatar')
+    expect(cfg).not_to be_enabled('oauth.google_oauth2')
+    expect(cfg).not_to be_enabled('something.that.does.not.exist')
   end
 end

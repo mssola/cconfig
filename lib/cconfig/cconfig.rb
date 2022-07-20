@@ -17,9 +17,9 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with CConfig.  If not, see <http://www.gnu.org/licenses/>.
 
-require "cconfig/hash_utils"
-require "cconfig/errors"
-require "yaml"
+require 'cconfig/hash_utils'
+require 'cconfig/errors'
+require 'yaml'
 
 module CConfig
   # Config is the main class of this library. It allows you to fetch the current
@@ -37,8 +37,8 @@ module CConfig
     # `#{prefix}_LOCAL_CONFIG_PATH` environment variable if it was set.
     def initialize(default:, local:, prefix:)
       @default = default
-      @prefix  = prefix || "cconfig"
-      @local   = ENV["#{@prefix.upcase}_LOCAL_CONFIG_PATH"] || local
+      @prefix  = prefix || 'cconfig'
+      @local   = ENV.fetch("#{@prefix.upcase}_LOCAL_CONFIG_PATH") { local }
     end
 
     # Returns a hash with the app configuration contained in it.

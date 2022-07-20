@@ -21,5 +21,5 @@
 module CConfig
 end
 
-require "cconfig/cconfig"
-require "cconfig/railtie" if defined?(Rails)
+require 'cconfig/cconfig'
+require 'cconfig/railtie' if defined?(Rails)

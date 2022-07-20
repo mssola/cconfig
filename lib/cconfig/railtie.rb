@@ -17,7 +17,7 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with CConfig.  If not, see <http://www.gnu.org/licenses/>.
 
-require "rails"
+require 'rails'
 
 module CConfig
   # This class will set up this gem for Ruby on Rails:
@@ -27,10 +27,10 @@ module CConfig
   class Railtie < Rails::Railtie
     railtie_name :cconfig
 
-    initializer "cconfig" do |app|
+    initializer 'cconfig' do |app|
       prefix     = ::CConfig::Railtie.fetch_prefix(app)
-      default    = Rails.root.join("config", "config.yml")
-      local      = Rails.root.join("config", "config-local.yml")
+      default    = Rails.root.join('config', 'config.yml')
+      local      = Rails.root.join('config', 'config-local.yml')
       cfg        = ::CConfig::Config.new(default: default, local: local, prefix: prefix)
 
       # NOTE: this is a global constant from now on. The Rails application
@@ -39,7 +39,7 @@ module CConfig
     end
 
     rake_tasks do
-      Dir[File.join(File.dirname(__FILE__), "../tasks/*.rake")].each do |task|
+      Dir[File.join(File.dirname(__FILE__), '../tasks/*.rake')].each do |task|
         load task
       end
     end
@@ -49,8 +49,8 @@ module CConfig
     #
     # app contains the Rails application as given by the railtie API.
     def self.fetch_prefix(app)
-      if ENV["CCONFIG_PREFIX"].present?
-        ENV["CCONFIG_PREFIX"]
+      if ENV['CCONFIG_PREFIX'].present?
+        ENV['CCONFIG_PREFIX']
       elsif Rails::VERSION::MAJOR >= 6
         app.class.module_parent_name.inspect
       else
