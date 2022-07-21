@@ -52,7 +52,7 @@ module CConfig
       if ENV['CCONFIG_PREFIX'].present?
         ENV['CCONFIG_PREFIX']
       elsif Rails::VERSION::MAJOR >= 6
-        app.class.module_parent_name.inspect
+        app.class.module_parent_name
       else
         app.class.parent_name.inspect
       end
