@@ -65,6 +65,8 @@ module CConfig
       if File.file?(@local)
         # Check for bad user input in the local config.yml file.
         local = YAML.load_file(@local)
+        return {} if local.nil?
+
         raise FormatError unless local.is_a?(::Hash)
 
         local

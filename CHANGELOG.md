@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.1
+
+- Don't throw an error if the local file is empty.
+
 ## 1.3.0
 
 - Added Ruby on Rails 6.x support. See

@@ -75,6 +75,11 @@ describe CConfig::Config do
       expect { bad.fetch }.to raise_error(::CConfig::FormatError, msg)
     end
 
+    it 'does not raise an error if the local file is simply empty' do
+      empty = get_config('config.yml', 'empty.yml')
+      expect { empty.fetch  }.not_to raise_error
+    end
+
     it 'returns the proper config while hiding passwords' do
       cfg     = get_config('config.yml', 'local.yml')
       fetched = cfg.fetch
