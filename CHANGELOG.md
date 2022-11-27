@@ -2,7 +2,12 @@
 
 ## 1.3.1
 
-- Don't throw an error if the local file is empty.
+- Don't throw an error if the local file is empty. See
+  [6c464709605f](https://github.com/mssola/cconfig/commit/6c464709605f).
+- rake: print config when it's been already defined. See
+  [b1d862551ed1](https://github.com/mssola/cconfig/commit/b1d862551ed1).
+- railtie: don't fetch the name by inspecting. See
+  [0c87a22c324d](https://github.com/mssola/cconfig/commit/0c87a22c324d).
 
 ## 1.3.0
 
