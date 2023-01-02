@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Copyright (C) 2017-2022 Miquel Sabaté Solà <msabate@suse.com>
+# Copyright (C) 2017-2023 Miquel Sabaté Solà <msabate@suse.com>
 #
 # This file is part of CConfig.
 #

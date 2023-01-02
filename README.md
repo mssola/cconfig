@@ -137,7 +137,7 @@ This project is based on work I did for the
 gem so it can be also used for other projects that might be interested in this.
 
 ```
-Copyright (C) 2017-2022 Miquel Sabaté Solà <msabate@suse.com>
+Copyright (C) 2017-2023 Miquel Sabaté Solà <msabate@suse.com>
 
 CConfig is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
